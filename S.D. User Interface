@@ -1,0 +1,200 @@
+4. USER INTERFACE DESIGN  
+The user interface consists of a set of menus through which the user can interact with data on the Merit Badges server.  These menus include a “Welcome” menu, a “Groups” menu, a “Group Management” menu, a “Group History” menu, a “Create a Bill” menu, and a “Transaction” menu.  Each menu will contain fields for entering data required to perform a specified task.  The user will interact with the menus through the device’s touch screen.  
+  
+4.1  
+DESCRIPTION OF THE USER INTERFACE  
+Each menu will consist of various GUI components, such as buttons, labels, text fields, and list objects.  These components will be arranged in such a way that the user will be able to quickly grasp the purpose of each menu and perform whatever task it is designed for efficiently.  A detailed description of these menus and their interactions with each other will be described in section 4.1.2.  
+Shape 
+The next several pages describe and illustrate the following Merit Badges menus:  
+For first time users…  
+Welcome/Registration  
+Groups  
+Create Group  
+For returning users…  
+Groups  
+Create a Group
+Member-to-Member Contact 
+View Group  
+Group History  
+Manage Group  
+  FOR FIRST TIME USERS  
+WELCOME/REGISTRATION  
+The first time a user runs the Merit Badges Windows Phone 8 application on his phone, the “Welcome/Registration” menu will appear, which welcomes the user to the application and requests then to authenticate using Facebook, twitter, or google. If the user does not have an account and option to sign up for a new account will appear. 
+   
+Facebook  
+ 
+The user will have the opportunity to login in with their network of choice. For demonstrating purposes only Facebook will be shown. When the user is signed in the application will show their user id displayed in the bottom of the screen. Once the user is finished they are able to logout of the application by clicking the log out button. 
+ 
+Ranks   
+
+Once the user has finished creating an account, he will be taken to the Ranking information list. Here the user can select a rank to see what the requirements are. 
+ 
+Merit Badges  
+  
+This will take them to the Merit Badges menu.  On this menu, the user will be able to view the badges that are available. To view the requirements the user will select a badge. This badge will be linked to an external webpage which list the requirement for that particular badge.  
+  
+My Badges 
+ 
+Image 
+In the “my badges” section of the app users will have the ability to track the badges they received. By clicking the + button users will be able to add from a list of badges. Once the badge is added and all the information is filled out for the badge the user will then save their newly earned badge. User can retrieve a report of the list of badges achieved via email by clicking on the email button. If a user accidentally add the wrong badge they may delete it by pressing the delete button.  
+  
+  INTERFACE DESIGN  
+ 
+4.3  
+COMPONENTS AVAILABLE  
+The components that Merit Badges will be using include the following:  
+• View  
+Xaml is what Windows Phone 8 (WP8) uses to display all of its GUI components. 
+ o All of Merit Badges menus will inherit from the WP8 Xaml. Class files.  
+• RootLayout o The RootLayout component allows the arbitrary placement of components within its bounds.  
+Merit Badges uses this component on each of its menus to arrange the buttons and text in a logical manner on the application bar.  
+Button o The Button component allows users to interact by pushing it.  When a button is pushed it creates an event which can be handled by an EventHandler outside of the Button class. o Merit Badges will handle most of its human-computer interaction through buttons.  Each menu class will have its own unique EventHandlers to handle the user’s inputs.  
+TextView o The TextView component is used to display text in a linear manner. o Merit Badges will use TextView to display menu labels and messages.  
+ScrollBarViewer o The ScrollBarViewer component is used to display test or images in a vertical or horizontal manner. o Merit Badges will use ScrollBarViewer to display long lists of text and images. 
+ListView o The ListView component is used to display a list of text with a scroll bar.  ListView allows the user to scroll and select/highlight objects displayed on the list  
+ListView generates an event whenever the user changes the selection of objects on the list.  
+Merit Badges will use ListView to display the list of ranks, requirements and badges 
+Each menu of the application will define EventHandlers for when the ListViews are interacted with.  
+4.4  
+UIDS DESCRIPTION  
+The User Interface Development Application is provided by the Visual Studio 2013.  
+Our UIDS generates XAML code from a graphical drag and drop menu designer.  The graphical components of the UIDS are somewhat limited, so much of the design will be done by modifying the XAML code directly.  
+The functional aspects of each menu will be implemented in C#.  This encompasses EventHandlers and any menu class members.  
+  
+5.  
+RESTRICTIONS, LIMITATIONS, AND CONSTRAINTS  
+  
+As time is a limiting factor, the optional features previously mentioned in the SRS document are not discussed at all in this document. This is due to the fact that these features will likely not be implemented within the allotted time for this projects completion. However, as a result of the modular design and organization of data – as well as limited expansion potential on the server side – implementing these optional features at a later date would be arguably easier than incorporating them into the first design.  
+  
+Another limitation of the software is the lack of a web interface. While not included in the optional features (as it may be considered a product of its own), a web interface to the Merit Badges Application would allow users with or without the WP8 application to use a web interface with all of the capabilities of the Merit Badges application. Once the server for the client application has been developed, it would be possible to implement this interface with relative ease.  
+  
+A constraint that is frequently mentioned in this document as well as the SRS is the requirement for the user to have internet access on their WP8 client.  This is essential, as all data mutating actions make a call to the Azure server in order to complete that action. A potential solution is an offline queue that stores actions to be sent to the server once an active internet connection is established. If any conflicting information has been uploaded by other users during the first users offline time, all of the first user’s queued actions are discarded and the user is notified of this (and presented with the most recently changed data).  
+  
+As the application frequently queries a server over the internet, care must be taken to ensure that large amounts of traffic are not being sent or received by our application, as this may dissuade users with costly data plans from using our application.  Currently, we do not anticipate this being a problem, due our use of encoded JSON messages for passing data between the Azure Server client and the server.  However, if during testing we find our usage is too high, we will begin to investigate ways to decrease this usage.  More usage would cost more money and with this first run of the application I am using a free version of Windows Azure. Possible ideas include requesting specific fields that have changed, rather than entire objects, and also compressing the JSON objects that are sent between client and Azure server.  
+  
+Another constraint imposed on the user of this software is that they must have either a Facebook, twitter, or google account or they may sign up for an account of choice to begin. This is used a unique identifier for each user and also provides an avenue for a user to re-register their account in the event that they switch phones (as the ID of the phone will provide authentication for a user).  
+
+6. TESTING ISSUES  
+  
+Each Xaml class will be tested individually to make sure the functions and constructors are operating correctly. Then, once the program is assembled, it will be tested as a whole to ensure all of the components work together correctly. Manual testing will be done in Microsoft Visual Studios 2013 and then uploaded to the windows store tester to ensure release to the windows phone store. 
+  
+6.1  
+TESTING CASES AND EXPECTED RESULTS  
+The types of tests to be conducted are specified below, including as much detail as is possible at this stage. Emphasis here is on black-box and white-box testing.  
+  
+Shape 
+While each class is being implemented, I will test each class/Xaml file to make sure each function is working. All debugging of the code will be conducted in the development environment.  
+  
+Shape 
+Black Box Testing comprises a majority of the testing process. This will be done after all the components are assembled, and will consist of running through all possible situations that may occur in the use of the Merit Badges application.  
+  
+Shape 
+The following subsections provide a brief overview of the testing process for each feature.  
+  
+Image6.1.3.1 ACCOUNT CREATION  
+Description: correct data input o Input: Valid Authentication (Facebook,Twitter,Google), that is not already on the server o Output: Account is created on server, user taken to main page  
+Description: incorrect data input o Input: invalid Authentication account o Output: Account is not created, user is asked for different create a new account 
+Description: incorrect data input o Input:  email already exists on server and is an online account o Output: Account is not created, user is asked for different email and notified email already exist  
+Description: incorrect data input o Input:  email already exists on server and is an offline account o Output: Account is not created, existing account is set to online, and user is sent to his main page.  
+Image6.1.3.2 CONNECTING TO AZURE SERVER  
+Description: connection is established.  
+Input: Device tries to access the server, and succeeds o Output: Device pushes and pulls information as normal  
+Description: connection cannot be established o Input: Device tries to access server and fails o Output: User is alerted that they are offline, no data is transferred to server. All changes are stored locally and temporarily.  
+Description: connection is established after user has made changes while offline o Input: User is offline and makes changes that need to be pushed to the server; connection is established at a later time.  
+Output: device goes online; changes or either pushed to server or determined to be outdated.  
+6.1.3.3 Creating Achievements List 
+ 
+ImageDescription: The + button is clicked o Input: badge name is entered o Output: badge created on server. Badge added to list. 
+6.1.3.4 ADDING Badges  
+Description: Add button clicked o Input: Add badge button clicked o Output: user is taken to a screen where he can enter an All the necessary information to track his badges. Name of badge, date received and scout master name who signed off. 
+Description: Save button clicked o Input: o Output: Badge is saved to the list  
+Description: Email button clicked o Input: Valid email. o Output Email is sent 
+Description: Delete button is clicked o Input: Delete badge o Output: Badge has been deleted. 
+ 
+6.2  
+PERFORMANCE BOUNDS  
+Due to fact that the application is very demanding with respect to resources, execution time for all local actions should be negligible. This includes screen navigation, ranks, badges and badge list creation, etc. Also, since data is exchanged with the server in small plaintext messages, interactions between the client and server should also take very little time.   
+  
+In relation to the server component, it must uphold acceptable performance ability when negotiating the passing of information between server and the client. For the scope of this project, a simple PHP application implemented on a standard virtual dedicated server will suffice. As this server is only performing simple algorithms and database calls, it is not processing-intensive. The only expected issue involving the server (in terms of performance) involves the amount of groups and devices performing an interaction. This would be easily throttled by upgrading the bandwidth of the server. However, this will not be an issue for this project, as no more than 30-40 users will be utilizing the app. If the application is launched in the window phone store, the server Application will be revamped entirely.  
+  
+6.3  
+CRITICAL APPLICATIONS  
+The two most critical components of the WP8 application are that data must be accurate and that the server database must be updated correctly and contain no corrupted or false data.  
+  
+Server interaction is of critical note. Without proper server setup and flow of information to phones and to the database, the app will be rendered useless. Extensive testing must be done to ensure the validity of the server implementation in regard to networking with the individual mobile phone apps. Since the functionality of the app depends on the ability to request and send information to the server, it is imperative that this works as expected. Testing procedures will call for verifying information is passed wholly and correctly to the app and likewise from the app to the server. PHP will drive the operation of this process by either receiving information or disseminating it (to/from the database).  
+ 
+6.4  
+TESTING CASES  
+The following table lists all currently scheduled test cases:  
+  
+Feature  
+Cases  
+Server  
+Communication  
+Connection is established. New account, new member, new badge, are all created and sent to the server.  
+  
+Connection is not established. New account, new member, new badge are all created.  
+  
+Connection is not established. New account, new member, new badge are all created. Connection is then established.  
+  
+Account creation  
+Correct information input.  
+  
+Incorrect information input.  
+  
+Badge created.  
+New badge created.  
+  
+Add Badge  
+Invalid input  
+  
+From badges has list 
+  
+From badges does not have list 
+  
+By email has account  
+  
+By email does not have account  
+  
+Add badge 
+  
+Correct values  
+  
+Invalid values  
+  
+Stop Merit Badges App 
+Try to add badges after app has been stopped.  
+  
+Results  
+Report all results 
+  
+ 
+Algorithm   
+Create several users, badges and ranks and make sure all data is accurate.  
+  
+Performance   
+Time all actions to make sure device runs smoothly.  
+  
+7. APPENDICES   
+  
+7.1  
+PACKAGING AND INSTALLATION ISSUES  
+No special considerations are warranted here beyond installation of Merit Badges app through Windows Phone Store and/or running of the environment through the SDK emulator.  
+  
+Packaging requires that the WP8 application be signed. The WP8 Application will not install applications which are not signed. After this the final APK package will be zipped.  
+  
+7.2  
+DESIGN METRICS TO BE USED  
+Stability will be determined by measuring and calculating the ease to change packages without affecting other packages within the application. Abstractness will be evaluated subjectively by analyzing code readability, modularization of classes and methods, and overall structure of the code.  
+  
+7.3  
+SEQUENCE DIAGRAMS  
+See attached file: sequence_diagrams.pdf  
+  
+7.4  
+UML DIAGRAM  
+See attached file: UML_diagram.pdf  
+  
+NOTE: these files are included as attachments in order to preserve formatting.  
+ 
+ 
